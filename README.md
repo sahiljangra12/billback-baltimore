@@ -27,33 +27,30 @@ Everything runs in the browser. PDFs are read with [pdf.js](https://mozilla.gith
 ## Project structure
 
 ```
-├── index.html              Home
-├── bge.html                BGE checker
-├── water.html              Water checker
-├── tow.html                Tow checker
-├── help.html               Bill-assistance finder (EUSP, MEAP, Water4All)
-├── rights.html             Escalation paths & deadlines
-├── about.html              How it works, privacy, all sources
-├── assets/
-│   └── css/styles.css      Design system (tokens, components, print styles)
-├── js/
-│   ├── data/               Facts only, each tied to a source
-│   │   ├── sources.js        Every official source + date checked
-│   │   ├── water-rates.js    DPW FY2026/FY2027 rates, expected-bill math
-│   │   ├── assistance.js     FY27 200% FPL limits, programs
-│   │   ├── towing.js         Md. towing law numbers
-│   │   └── contacts.js       Escalation steps per bill type
-│   ├── rules/              Pure functions: form values → findings
-│   │   ├── finding.js        Finding shape, severities, summary
-│   │   ├── bge.js · water.js · tow.js
-│   ├── parsers/            Bill text → form fields (best effort)
-│   │   ├── common.js · bge.js · water.js · tow.js
-│   ├── letters/letters.js  Dispute-letter builder
-│   ├── lib/                DOM helpers, in-browser PDF/OCR text extraction
-│   ├── ui/                 Shared header/footer, checker controller
-│   └── pages/              Small entry script per page
-├── tests/                  node:test suites for rules, parsers, letters
-└── docs/                   Data maintenance & roadmap
+├── docs/                     The website (GitHub Pages publishes this folder)
+│   ├── index.html              Home
+│   ├── bge.html                BGE checker
+│   ├── water.html              Water checker
+│   ├── tow.html                Tow checker
+│   ├── help.html               Bill-assistance finder (EUSP, MEAP, Water4All)
+│   ├── rights.html             Escalation paths & deadlines
+│   ├── about.html              How it works, privacy, all sources
+│   ├── assets/css/styles.css   Design system (tokens, components, print styles)
+│   └── js/
+│       ├── data/               Facts only, each tied to a source
+│       │   ├── sources.js        Every official source + date checked
+│       │   ├── water-rates.js    DPW FY2026/FY2027 rates, expected-bill math
+│       │   ├── assistance.js     FY27 200% FPL limits, programs
+│       │   ├── towing.js         Md. towing law numbers
+│       │   └── contacts.js       Escalation steps per bill type
+│       ├── rules/              Pure functions: form values → findings
+│       ├── parsers/            Bill text → form fields (best effort)
+│       ├── letters/            Dispute-letter builder
+│       ├── lib/                DOM helpers, in-browser PDF/OCR text extraction
+│       ├── ui/                 Shared header/footer, checker controller
+│       └── pages/              Small entry script per page
+├── tests/                    node:test suites for rules, parsers, letters
+└── notes/                    Data maintenance guide & roadmap
 ```
 
 The rules, parsers and letters are plain ES modules with no DOM access, so they run unchanged in the browser and in Node tests.
@@ -61,7 +58,7 @@ The rules, parsers and letters are plain ES modules with no DOM access, so they 
 ## Run locally
 
 ```bash
-npm start          # serves on http://localhost:8080 (python3 http.server)
+npm start          # serves docs/ on http://localhost:8080
 npm test           # runs the unit tests
 ```
 
@@ -69,7 +66,7 @@ No build step and no dependencies.
 
 ## Keeping it accurate
 
-Rates and limits change every July. See [`docs/DATA.md`](docs/DATA.md) for what to update and where. Every value lives in `js/data/` next to its source.
+Rates and limits change every July. See [`notes/DATA.md`](notes/DATA.md) for what to update and where. Every value lives in `docs/js/data/` next to its source.
 
 ## Disclaimer
 

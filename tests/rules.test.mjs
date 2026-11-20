@@ -1,12 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { checkBge } from "../js/rules/bge.js";
-import { checkWater } from "../js/rules/water.js";
-import { checkTow } from "../js/rules/tow.js";
-import { summarize } from "../js/rules/finding.js";
-import { expectedWaterSewer, ratesFor } from "../js/data/water-rates.js";
-import { checkAssistance, monthlyLimit } from "../js/data/assistance.js";
-import { SOURCES } from "../js/data/sources.js";
+import { checkBge } from "../docs/js/rules/bge.js";
+import { checkWater } from "../docs/js/rules/water.js";
+import { checkTow } from "../docs/js/rules/tow.js";
+import { summarize } from "../docs/js/rules/finding.js";
+import { expectedWaterSewer, ratesFor } from "../docs/js/data/water-rates.js";
+import { checkAssistance, monthlyLimit } from "../docs/js/data/assistance.js";
+import { SOURCES } from "../docs/js/data/sources.js";
 
 const ids = (fs) => fs.map((f) => f.id);
 

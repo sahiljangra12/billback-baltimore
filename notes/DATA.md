@@ -1,6 +1,6 @@
 # Keeping the data accurate
 
-All facts live in `js/data/`. Rules never hard-code a number. When you change a value, update the `checked` date of its source in `js/data/sources.js` and run `npm test`.
+All facts live in `docs/js/data/`. Rules never hard-code a number. When you change a value, update the `checked` date of its source in `docs/js/data/sources.js` and run `npm test`.
 
 ## Yearly (every July 1)
 
@@ -21,4 +21,4 @@ All facts live in `js/data/`. Rules never hard-code a number. When you change a 
 ## Known gaps to verify
 
 - **Baltimore City trespass-tow cap.** The app estimates it as 2 × $140 = $280, based on the City's 2023 testimony that its impound tow fee is $140. That's why the finding is only "Worth checking". Confirm the current figure with the Board of Licensing for Towing Services, then consider promoting it to "Likely error".
-- **BGE bill layout.** The parser was written against typical BGE bill wording, not tested on many real PDFs. Collect anonymized samples to harden `js/parsers/bge.js`.
+- **BGE bill layout.** The parser was written against typical BGE bill wording, not tested on many real PDFs. Collect anonymized samples to harden `docs/js/parsers/bge.js`.

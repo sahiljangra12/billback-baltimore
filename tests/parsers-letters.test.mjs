@@ -1,10 +1,10 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseBge } from "../js/parsers/bge.js";
-import { parseWater } from "../js/parsers/water.js";
-import { parseTow } from "../js/parsers/tow.js";
-import { buildLetter } from "../js/letters/letters.js";
-import { checkTow } from "../js/rules/tow.js";
+import { parseBge } from "../docs/js/parsers/bge.js";
+import { parseWater } from "../docs/js/parsers/water.js";
+import { parseTow } from "../docs/js/parsers/tow.js";
+import { buildLetter } from "../docs/js/letters/letters.js";
+import { checkTow } from "../docs/js/rules/tow.js";
 
 // Synthetic text shaped like real bills. Real layouts vary; the parsers only fill what they find.
 const BGE_TEXT = `Baltimore Gas and Electric
