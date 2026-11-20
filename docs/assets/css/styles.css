@@ -171,7 +171,7 @@ p { margin: 0 0 1em; }
 .service-card:visited { color: var(--ink); }
 .service-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); color: var(--ink); }
 .service-card .media { position: relative; aspect-ratio: 16/9; background: var(--base-lighter); }
-.service-card .media img { width: 100%; height: 100%; object-fit: cover; }
+.service-card .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .service-card .badge { position: absolute; left: 16px; bottom: -22px; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--primary); color: var(--white); border: 3px solid var(--white); }
 .service-card .badge .icon { width: 24px; height: 24px; }
 .service-card .body { padding: 34px 22px 22px; display: flex; flex-direction: column; flex: 1; }
@@ -267,7 +267,8 @@ p { margin: 0 0 1em; }
 .side h3 { display: flex; gap: 8px; align-items: center; color: var(--primary-darker); }
 .side ol, .side ul { padding-left: 1.2em; margin: 0; display: grid; gap: 8px; }
 .side-photo { border-radius: var(--radius); overflow: hidden; margin: -8px -8px 18px; aspect-ratio: 16/10; }
-.side-photo img { width: 100%; height: 100%; object-fit: cover; }
+.side-photo { position: relative; }
+.side-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
 .dropzone { border: 2px dashed var(--primary-light); border-radius: var(--radius-lg); padding: 30px 20px; text-align: center; background: var(--primary-lightest); cursor: pointer; transition: background .15s, border-color .15s; }
 .dropzone:hover, .dropzone.drag { background: var(--primary-lighter); border-color: var(--primary); }
