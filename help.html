@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help paying your bills | BillBack Baltimore</title>
+  <meta name="description" content="See if your Baltimore household qualifies for EUSP, MEAP energy assistance or the Water4All water discount, using the FY27 income limits.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script type="module" src="js/ui/layout.js"></script>
+  <script type="module" src="js/pages/help.js"></script>
+</head>
+<body>
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <div class="crumbs"><a href="index.html">Home</a> / Get help paying</div>
+        <h1>Help paying your bills</h1>
+        <p>Two questions, and we'll show which programs you likely qualify for. Nothing you enter leaves this page.</p>
+      </div>
+    </section>
+
+    <div class="wrap checker">
+      <div>
+        <div class="panel">
+          <form id="help-form" class="grid-2" novalidate>
+            <div class="field"><label for="householdSize">People in your home</label><input id="householdSize" name="householdSize" type="number" min="1" max="20" required></div>
+            <div class="field"><label for="monthlyIncome">Household income per month ($, before tax)</label><input id="monthlyIncome" name="monthlyIncome" type="number" min="0" step="1" required><span class="hint">Everyone's income in the last 30 days. Full-time students' income may not count.</span></div>
+            <div class="btn-row" style="grid-column:1/-1"><button class="btn btn-primary" type="submit">Show my options</button></div>
+          </form>
+        </div>
+        <section id="help-results" class="results" hidden aria-live="polite"></section>
+
+        <div class="panel" style="margin-top:20px">
+          <h2>FY27 income limits (200% of the federal poverty level)</h2>
+          <p class="muted">These limits apply to EUSP, MEAP and Water4All. Effective July 1, 2026.</p>
+          <div style="overflow-x:auto"><table id="limits" style="width:100%;border-collapse:collapse"></table></div>
+          <p class="small muted" style="margin-top:10px">Source: <a href="https://dhs.maryland.gov/documents/OHEP/FY27-OHEP-Income-Guidelines.pdf" target="_blank" rel="noopener">Maryland OHEP FY27 Income Guidelines ↗</a>. For 11+ people, MEAP uses a separate state-median-income table.</p>
+        </div>
+      </div>
+
+      <aside class="side">
+        <div class="panel">
+          <h3>Tips before you apply</h3>
+          <ol class="small">
+            <li>One OHEP application covers <b>both EUSP and MEAP</b>.</li>
+            <li>Already getting a state benefit with a 200% FPL limit? <b>Water4All has a shorter application</b> for you.</li>
+            <li><b>Renters can get Water4All</b> even if the water bill is in the landlord's name.</li>
+            <li>Water4All lasts <b>one year</b>. Set a reminder to renew.</li>
+            <li>Behind on BGE? Ask about <b>arrearage retirement</b> (past-due help) when you apply.</li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

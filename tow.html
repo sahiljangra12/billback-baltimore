@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Check your tow receipt | BillBack Baltimore</title>
+  <meta name="description" content="Check a Baltimore tow or impound receipt against Maryland towing law: drop fees, notice fees, storage, payment rules and stolen-car fees.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script type="module" src="js/ui/layout.js"></script>
+  <script type="module" src="js/pages/tow.js"></script>
+</head>
+<body>
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <div class="crumbs"><a href="index.html">Home</a> / Tow receipt</div>
+        <h1>🚗 Check your tow receipt</h1>
+        <p>Towed from a private lot, or picked up from the City impound? We check every charge against Maryland and Baltimore towing rules.</p>
+      </div>
+    </section>
+
+    <div class="wrap checker">
+      <div>
+        <div class="panel">
+          <div class="dropzone" id="upload" tabindex="0" role="button" aria-describedby="upload-status">
+            <div class="big" aria-hidden="true">🧾</div>
+            <b>Drop a photo of your receipt here</b> or click to choose
+            <div class="small muted">Read on your device, never uploaded.</div>
+            <input type="file" accept="application/pdf,image/*,.txt">
+          </div>
+          <div class="status" id="upload-status" role="status" aria-live="polite"></div>
+
+          <div class="divider">or enter the charges</div>
+
+          <form id="bill-form" novalidate>
+            <fieldset>
+              <legend>Where was your car taken?</legend>
+              <div class="seg" role="radiogroup" aria-label="Tow type">
+                <label><input type="radio" name="towType" value="private" checked><span>A private tow company (from a parking lot)</span></label>
+                <label><input type="radio" name="towType" value="city"><span>The City impound (Pulaski Hwy / Fallsway)</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Charges on the receipt</legend>
+              <div class="grid-3">
+                <div class="field"><label for="towFee">Tow fee ($)</label><input id="towFee" name="towFee" type="number" step="0.01" min="0"></div>
+                <div class="field"><label for="storagePerDay">Storage per day ($)</label><input id="storagePerDay" name="storagePerDay" type="number" step="0.01" min="0"></div>
+                <div class="field"><label for="storageDays">Days of storage</label><input id="storageDays" name="storageDays" type="number" min="0"></div>
+                <div class="field"><label for="storageTotal">Storage total ($)</label><input id="storageTotal" name="storageTotal" type="number" step="0.01" min="0"><span class="hint">If not itemized per day</span></div>
+                <div class="field"><label for="noticeFee">Notice / admin fee ($)</label><input id="noticeFee" name="noticeFee" type="number" step="0.01" min="0"></div>
+                <div class="field"><label for="otherFees">Other fees ($)</label><input id="otherFees" name="otherFees" type="number" step="0.01" min="0"></div>
+              </div>
+              <div class="field" style="margin-top:14px"><label for="hoursToRetrieve">Hours between the car reaching storage and you picking it up</label><input id="hoursToRetrieve" name="hoursToRetrieve" type="number" min="0" step="1" style="max-width:220px"></div>
+            </fieldset>
+
+            <fieldset data-tow="private">
+              <legend>About the private-lot tow</legend>
+              <div class="grid-2">
+                <div class="field"><label for="postedMax">Max tow charge on the lot's sign ($)</label><input id="postedMax" name="postedMax" type="number" step="0.01" min="0"><span class="hint">Signs must show it. Snap a photo.</span></div>
+                <div class="field"><label for="dropFee">Drop fee you paid ($)</label><input id="dropFee" name="dropFee" type="number" step="0.01" min="0"><span class="hint">If you caught them before the car left the lot</span></div>
+              </div>
+              <div style="margin-top:14px">
+                <label class="check"><input type="checkbox" name="paymentRefused"> <span><b>The storage lot wouldn't take my card</b> and had no working ATM</span></label>
+                <label class="check"><input type="checkbox" name="registrationOnly"> <span><b>I was towed only for expired or missing registration</b></span></label>
+              </div>
+              <div class="field" style="margin-top:10px"><label for="registrationNoticeHours">If so, hours between the warning notice and the tow</label><input id="registrationNoticeHours" name="registrationNoticeHours" type="number" min="0" style="max-width:220px"><span class="hint">Leave blank if there was no notice</span></div>
+            </fieldset>
+
+            <fieldset data-tow="city" hidden>
+              <legend>About the City tow</legend>
+              <label class="check"><input type="checkbox" name="stolen"> <span><b>My car had been stolen</b><br><span class="small muted">Have your police report number ready.</span></span></label>
+            </fieldset>
+
+            <div class="btn-row">
+              <button class="btn btn-primary" type="submit">Check my receipt</button>
+              <button class="btn btn-ghost" type="reset">Start over</button>
+            </div>
+          </form>
+        </div>
+
+        <section id="results" class="results" hidden aria-live="polite"></section>
+      </div>
+
+      <aside class="side">
+        <div class="panel">
+          <h3>Your rights after a private-lot tow</h3>
+          <ol class="small">
+            <li>If you get there <b>before the car leaves the lot</b>, they must release it. The drop fee is at most <b>half</b> a full tow.</li>
+            <li>The storage lot must take <b>cash or 2+ major cards</b>. A cash-only lot needs a working ATM.</li>
+            <li>You can pick up your car <b>6 a.m. to midnight, every day</b>.</li>
+            <li>Pick up within <b>48 hours</b> and you owe <b>no notice fee</b>.</li>
+            <li>The tower needs the lot owner's <b>written authorization and a photo</b> of the violation.</li>
+          </ol>
+          <p class="small muted" style="margin:14px 0 0">Sources: <a href="https://law.justia.com/codes/maryland/2018/transportation/title-21/subtitle-10a/section-21-10a-04/" target="_blank" rel="noopener">§21-10A-04</a>, <a href="https://law.justia.com/codes/maryland/transportation/title-21/subtitle-10a/section-21-10a-05/" target="_blank" rel="noopener">§21-10A-05</a></p>
+        </div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

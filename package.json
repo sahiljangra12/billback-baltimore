@@ -1,0 +1,12 @@
+{
+  "name": "billback-baltimore",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Check Baltimore BGE bills, water bills and tow receipts for errors and write the dispute letter.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "start": "python3 -m http.server 8080"
+  },
+  "license": "MIT"
+}

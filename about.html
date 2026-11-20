@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About, privacy &amp; sources | BillBack Baltimore</title>
+  <meta name="description" content="How BillBack Baltimore works, how your data is handled, and every official source behind the checks.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script type="module" src="js/ui/layout.js"></script>
+  <script type="module" src="js/pages/about.js"></script>
+</head>
+<body>
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <div class="crumbs"><a href="index.html">Home</a> / About</div>
+        <h1>About BillBack Baltimore</h1>
+        <p>Built so Baltimore residents can check a bill against the rules as quickly as the company that sent it.</p>
+      </div>
+    </section>
+
+    <div class="wrap prose" style="margin-top:32px">
+      <h2>How it works</h2>
+      <p>Each checker compares what's on your bill with published facts: DPW's water and sewer rate schedule, Maryland's towing law, the PSC's complaint rules and the state's income limits for bill help. It doesn't guess. When something can't be confirmed from an official source, it's labelled <b>"Worth checking"</b> instead of <b>"Likely error"</b>.</p>
+
+      <h2>Privacy</h2>
+      <p>Your bill is read <b>inside your browser</b>. PDFs are opened with pdf.js and photos with Tesseract OCR, both running on your device. Nothing you upload or type is sent to a server, stored, or tracked. Close the tab and it's gone.</p>
+
+      <h2>What it can't do</h2>
+      <p>It can't change BGE's or the City's rates. Those are set by the Maryland PSC and the Board of Estimates. It can't see your account history, and bill layouts change, so always check auto-filled numbers against your bill. This is general information, not legal advice. For legal help, contact <a href="https://www.mdlab.org/" target="_blank" rel="noopener">Maryland Legal Aid</a>.</p>
+
+      <h2 id="sources">Sources</h2>
+      <p class="muted">Every rule in the app points to one of these. "Checked" is the last date the fact was verified.</p>
+      <ul class="source-list" id="source-list"></ul>
+
+      <h2>Open source</h2>
+      <p>The code is public on <a href="https://github.com/sahiljangra12/billback-baltimore" target="_blank" rel="noopener">GitHub</a>. Found an outdated rate or a bill the reader can't handle? Open an issue.</p>
+    </div>
+  </main>
+</body>
+</html>

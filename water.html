@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Check your Baltimore water bill | BillBack Baltimore</title>
+  <meta name="description" content="Recalculate your Baltimore City water and sewer bill at DPW's FY2027 rates, find leaks and misreads, check Water4All eligibility and get a dispute letter.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script type="module" src="js/ui/layout.js"></script>
+  <script type="module" src="js/pages/water.js"></script>
+</head>
+<body>
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <div class="crumbs"><a href="index.html">Home</a> / Water bill</div>
+        <h1>💧 Check your City water bill</h1>
+        <p>We recalculate your water and sewer charges at the rates DPW publishes and flag anything that doesn't fit your home.</p>
+      </div>
+    </section>
+
+    <div class="wrap checker">
+      <div>
+        <div class="panel">
+          <div class="dropzone" id="upload" tabindex="0" role="button" aria-describedby="upload-status">
+            <div class="big" aria-hidden="true">📄</div>
+            <b>Drop your water bill here</b> or click to choose
+            <div class="small muted">PDF from the DPW portal, or a photo. Read on your device, never uploaded.</div>
+            <input type="file" accept="application/pdf,image/*,.txt">
+          </div>
+          <div class="status" id="upload-status" role="status" aria-live="polite"></div>
+
+          <div class="divider">or enter the numbers</div>
+
+          <form id="bill-form" novalidate>
+            <fieldset>
+              <legend>This bill</legend>
+              <div class="grid-3">
+                <div class="field"><label for="ccf">Water used (CCF)</label><input id="ccf" name="ccf" type="number" step="0.1" min="0"><span class="hint">1 CCF = 748 gallons</span></div>
+                <div class="field"><label for="billingDays">Days in service period</label><input id="billingDays" name="billingDays" type="number" min="1" max="120"></div>
+                <div class="field"><label for="serviceDate">Service period end date</label><input id="serviceDate" name="serviceDate" type="date"><span class="hint">Picks the right year's rates</span></div>
+                <div class="field"><label for="meterSize">Meter size</label>
+                  <select id="meterSize" name="meterSize"><option value="5/8">5/8" (most homes)</option><option value="3/4">3/4"</option><option value="1">1"</option></select>
+                </div>
+                <div class="field"><label for="readType">Meter reading</label>
+                  <select id="readType" name="readType"><option value="unknown">Not sure</option><option value="actual">Actual</option><option value="estimated">Estimated</option></select>
+                </div>
+                <div class="field"><label for="amountDue">Total amount due ($)</label><input id="amountDue" name="amountDue" type="number" step="0.01" min="0"></div>
+              </div>
+              <div class="field" style="margin-top:14px">
+                <label for="waterSewerCharges">Water + sewer charges on this bill ($)</label>
+                <input id="waterSewerCharges" name="waterSewerCharges" type="number" step="0.01" min="0">
+                <span class="hint">Add up the water usage, sewer usage, water &amp; sewer infrastructure, and account management lines. Leave out stormwater, the Bay Restoration Fee and past-due amounts.</span>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Your usage history <span class="small muted">(optional, finds spikes)</span></legend>
+              <div class="grid-2">
+                <div class="field"><label for="prevCcf">Last bill (CCF)</label><input id="prevCcf" name="prevCcf" type="number" step="0.1" min="0"></div>
+                <div class="field"><label for="avgCcf">Your usual monthly use (CCF)</label><input id="avgCcf" name="avgCcf" type="number" step="0.1" min="0"><span class="hint">Average of a few normal months</span></div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Your home</legend>
+              <label class="check"><input type="checkbox" name="vacant"> <span><b>Nobody lived at the property during this period</b></span></label>
+              <div class="grid-2" style="margin-top:14px">
+                <div class="field"><label for="householdSize">People in your home</label><input id="householdSize" name="householdSize" type="number" min="1" max="20"></div>
+                <div class="field"><label for="monthlyIncome">Household income per month ($, before tax)</label><input id="monthlyIncome" name="monthlyIncome" type="number" min="0" step="1"><span class="hint">Only used to check Water4All eligibility, on your device</span></div>
+              </div>
+            </fieldset>
+
+            <div class="btn-row">
+              <button class="btn btn-primary" type="submit">Check my bill</button>
+              <button class="btn btn-ghost" type="reset">Start over</button>
+            </div>
+          </form>
+        </div>
+
+        <section id="results" class="results" hidden aria-live="polite"></section>
+      </div>
+
+      <aside class="side">
+        <div class="panel">
+          <h3>Rates we check against</h3>
+          <p class="small muted">DPW residential rates from July 1, 2026 (FY2027):</p>
+          <ul class="small" style="padding-left:1.1em;margin:0 0 12px">
+            <li>Water: <b>$4.86</b> per CCF</li>
+            <li>Sewer: <b>$14.37</b> per CCF</li>
+            <li>Infrastructure (5/8" meter): <b>$17.52</b> water + <b>$16.51</b> sewer / month</li>
+            <li>Account management: <b>$5.79</b> per bill</li>
+          </ul>
+          <p class="small muted">Bills for periods before July 2026 are checked at FY2026 rates.</p>
+          <h3 style="margin-top:18px">Quick leak test</h3>
+          <p class="small muted" style="margin:0">Turn off every tap, then watch the meter's low-flow indicator for 15 minutes. If it moves, water is escaping somewhere. Toilets are the usual suspect.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

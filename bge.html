@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Check your BGE bill | BillBack Baltimore</title>
+  <meta name="description" content="Check a BGE gas and electric bill for estimated readings, usage spikes, overpriced third-party suppliers and late fees, then get a dispute letter.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script type="module" src="js/ui/layout.js"></script>
+  <script type="module" src="js/pages/bge.js"></script>
+</head>
+<body>
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <div class="crumbs"><a href="index.html">Home</a> / BGE bill</div>
+        <h1>⚡ Check your BGE bill</h1>
+        <p>Upload the bill or enter a few numbers. Everything is optional: the more you add, the more we can check.</p>
+      </div>
+    </section>
+
+    <div class="wrap checker">
+      <div>
+        <div class="panel">
+          <div class="dropzone" id="upload" tabindex="0" role="button" aria-describedby="upload-status">
+            <div class="big" aria-hidden="true">📄</div>
+            <b>Drop your BGE bill here</b> or click to choose
+            <div class="small muted">PDF from My Account, or a photo of the paper bill. It's read on your device, never uploaded.</div>
+            <input type="file" accept="application/pdf,image/*,.txt">
+          </div>
+          <div class="status" id="upload-status" role="status" aria-live="polite"></div>
+
+          <div class="divider">or enter the numbers</div>
+
+          <form id="bill-form" novalidate>
+            <fieldset>
+              <legend>This bill</legend>
+              <div class="grid-3">
+                <div class="field"><label for="amountDue">Total amount due ($)</label><input id="amountDue" name="amountDue" type="number" step="0.01" min="0" inputmode="decimal"></div>
+                <div class="field"><label for="kwh">Electricity used (kWh)</label><input id="kwh" name="kwh" type="number" step="1" min="0" inputmode="numeric"></div>
+                <div class="field"><label for="therms">Gas used (therms)</label><input id="therms" name="therms" type="number" step="0.1" min="0" inputmode="decimal"></div>
+                <div class="field"><label for="billingDays">Days in billing period</label><input id="billingDays" name="billingDays" type="number" min="1" max="120"></div>
+                <div class="field"><label for="readType">Meter reading</label>
+                  <select id="readType" name="readType"><option value="unknown">Not sure</option><option value="actual">Actual</option><option value="estimated">Estimated</option></select>
+                </div>
+                <div class="field"><label for="lateFee">Late payment charge ($)</label><input id="lateFee" name="lateFee" type="number" step="0.01" min="0" inputmode="decimal"></div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Compare with earlier bills <span class="small muted">(optional, finds usage spikes)</span></legend>
+              <div class="grid-3">
+                <div class="field"><label for="prevKwh">Last bill (kWh)</label><input id="prevKwh" name="prevKwh" type="number" min="0"></div>
+                <div class="field"><label for="prevTherms">Last bill (therms)</label><input id="prevTherms" name="prevTherms" type="number" step="0.1" min="0"></div>
+                <div class="field"><label for="prevBillingDays">Last bill's days</label><input id="prevBillingDays" name="prevBillingDays" type="number" min="1" max="120"></div>
+                <div class="field"><label for="lastYearKwh">Same month last year (kWh)</label><input id="lastYearKwh" name="lastYearKwh" type="number" min="0"><span class="hint">Shown on the bill's usage chart</span></div>
+                <div class="field"><label for="lastYearTherms">Same month last year (therms)</label><input id="lastYearTherms" name="lastYearTherms" type="number" step="0.1" min="0"></div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Who supplies your energy? <span class="small muted">(often missed: third-party suppliers)</span></legend>
+              <div class="grid-3">
+                <div class="field"><label for="elecSupplier">Electric supplier</label><input id="elecSupplier" name="elecSupplier" type="text" placeholder="BGE, or the company name"></div>
+                <div class="field"><label for="elecSupplyRate">Supplier rate ($/kWh)</label><input id="elecSupplyRate" name="elecSupplyRate" type="number" step="0.0001" min="0" placeholder="e.g. 0.1599"></div>
+                <div class="field"><label for="elecPriceToCompare">BGE "Price to Compare" ($/kWh)</label><input id="elecPriceToCompare" name="elecPriceToCompare" type="number" step="0.0001" min="0"></div>
+                <div class="field"><label for="gasSupplier">Gas supplier</label><input id="gasSupplier" name="gasSupplier" type="text" placeholder="BGE, or the company name"></div>
+                <div class="field"><label for="gasSupplyRate">Supplier rate ($/therm)</label><input id="gasSupplyRate" name="gasSupplyRate" type="number" step="0.0001" min="0"></div>
+                <div class="field"><label for="gasPriceToCompare">BGE "Price to Compare" ($/therm)</label><input id="gasPriceToCompare" name="gasPriceToCompare" type="number" step="0.0001" min="0"></div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Your situation</legend>
+              <label class="check"><input type="checkbox" name="shutoffNotice"> <span><b>I got a shut-off (termination) notice</b><br><span class="small muted">We'll show you how to pause it.</span></span></label>
+              <div class="grid-2" style="margin-top:14px">
+                <div class="field"><label for="householdSize">People in your home</label><input id="householdSize" name="householdSize" type="number" min="1" max="20"></div>
+                <div class="field"><label for="monthlyIncome">Household income per month ($, before tax)</label><input id="monthlyIncome" name="monthlyIncome" type="number" min="0" step="1"><span class="hint">Only used to check bill-help eligibility, on your device</span></div>
+              </div>
+            </fieldset>
+
+            <div class="btn-row">
+              <button class="btn btn-primary" type="submit">Check my bill</button>
+              <button class="btn btn-ghost" type="reset">Start over</button>
+            </div>
+          </form>
+        </div>
+
+        <section id="results" class="results" hidden aria-live="polite"></section>
+      </div>
+
+      <aside class="side">
+        <div class="panel">
+          <h3>Where to find these on a BGE bill</h3>
+          <ol class="small">
+            <li><b>Usage</b> (kWh, therms) and the <b>billing period</b> are in the meter-reading section.</li>
+            <li>An <b>"E"</b> or the word <b>"Estimated"</b> next to a reading means BGE didn't read your meter.</li>
+            <li>If the <b>supply</b> line names a company other than BGE, you're with a third-party supplier. Your <b>Price to Compare</b> is printed on the bill.</li>
+            <li>The <b>usage history chart</b> shows the same month last year.</li>
+          </ol>
+          <p class="small muted" style="margin:14px 0 0">BGE's delivery rates are set by the Maryland PSC. This tool checks for errors and overcharges on <em>your</em> bill. It can't challenge the rates themselves. <a href="https://opc.maryland.gov/Why-is-my-BGE-bill-so-high" target="_blank" rel="noopener">Why bills are rising ↗</a></p>
+        </div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>
