@@ -4,54 +4,126 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BillBack Baltimore: check your BGE, water and tow bills</title>
-  <meta name="description" content="Free tool for Baltimore residents: check BGE bills, City water bills and tow receipts for errors, find bill help, and get a ready-to-send dispute letter.">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta name="description" content="Free tool for Baltimore residents: check BGE bills, City water bills and tow receipts for errors, find help paying, and get a ready-to-send dispute letter.">
+  <meta name="theme-color" content="#162e51">
+  <meta property="og:title" content="BillBack Baltimore">
+  <meta property="og:description" content="Check your BGE, water or tow bill against the rules, then send the dispute letter.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Public+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script type="module" src="js/ui/layout.js"></script>
 </head>
 <body>
   <main id="main">
-    <section class="hero">
+    <section class="hero" data-bg="rowhousesEast">
       <div class="wrap">
-        <p class="eyebrow" style="color:var(--gold)">For Baltimore renters, homeowners &amp; drivers</p>
-        <h1>That bill looks wrong? <em>Check it in two minutes.</em></h1>
-        <p class="lead">Upload your BGE bill, City water bill or tow receipt. We check it against the published rates and the law, show you what looks off, point you to help paying, and write the dispute letter for you.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="#tools">Check a bill</a>
-          <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.35)" href="help.html">Find help paying</a>
-        </div>
-        <div class="trust">
-          <span>Free, no sign-up</span>
-          <span>Your bill never leaves your device</span>
-          <span>Every finding links to its official source</span>
+        <div class="hero-card">
+          <span class="kicker" style="color:var(--gold)">For Baltimore renters, homeowners &amp; drivers</span>
+          <h1>Is your bill wrong? <span>Check it in two minutes.</span></h1>
+          <p class="lead">Upload your BGE bill, City water bill or tow receipt. We check it against the published rates and Maryland law, show what's off, find help paying, and write your dispute letter.</p>
+          <div class="btn-row">
+            <a class="btn btn-gold btn-big" href="#services">Check my bill <span data-icon="arrow"></span></a>
+            <a class="btn btn-outline-inverse btn-big" href="help.html">Get help paying</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="tools" id="tools">
+    <div class="trust-bar">
+      <ul class="wrap">
+        <li><span data-icon="money"></span> Free, no sign-up</li>
+        <li><span data-icon="lock"></span> Your bill never leaves your device</li>
+        <li><span data-icon="checkCircle"></span> Every finding cites an official source</li>
+        <li><span data-icon="letter"></span> Dispute letter written for you</li>
+      </ul>
+    </div>
+
+    <section class="section" id="services">
       <div class="wrap">
-        <div class="tool-grid">
-          <a class="tool-card" href="bge.html">
-            <span class="tool-icon i-bge" aria-hidden="true">⚡</span>
-            <h3>BGE gas &amp; electric</h3>
-            <p class="muted">Estimated readings, usage spikes, third-party suppliers charging more than BGE, late fees, shut-off notices.</p>
-            <span class="go">Check my BGE bill →</span>
+        <div class="section-head">
+          <span class="kicker">Start here</span>
+          <h2>What kind of bill do you want to check?</h2>
+          <p class="muted lead">Pick one. Each checker takes about two minutes and works on a phone.</p>
+        </div>
+        <div class="service-grid">
+          <a class="service-card" href="bge.html">
+            <div class="media"><img data-img="electricMeter" alt=""><span class="badge" data-icon="bolt"></span></div>
+            <div class="body">
+              <h3>BGE gas &amp; electric bill</h3>
+              <ul>
+                <li>Estimated meter readings</li>
+                <li>Sudden usage spikes</li>
+                <li>Third-party suppliers charging more than BGE</li>
+                <li>Late fees and shut-off notices</li>
+              </ul>
+              <span class="go">Check my BGE bill <span data-icon="arrow"></span></span>
+            </div>
           </a>
-          <a class="tool-card" href="water.html">
-            <span class="tool-icon i-water" aria-hidden="true">💧</span>
-            <h3>City water &amp; sewer</h3>
-            <p class="muted">Recalculates your bill at DPW's own FY2027 rates and flags leaks, misreads, vacant-home charges and math that doesn't add up.</p>
-            <span class="go">Check my water bill →</span>
+          <a class="service-card" href="water.html">
+            <div class="media"><img data-img="waterMeter" alt=""><span class="badge" data-icon="drop"></span></div>
+            <div class="body">
+              <h3>City water &amp; sewer bill</h3>
+              <ul>
+                <li>Recalculated at DPW's own 2026 rates</li>
+                <li>Leaks and misread meters</li>
+                <li>Charges at empty properties</li>
+                <li>Water4All discount check</li>
+              </ul>
+              <span class="go">Check my water bill <span data-icon="arrow"></span></span>
+            </div>
           </a>
-          <a class="tool-card" href="tow.html">
-            <span class="tool-icon i-tow" aria-hidden="true">🚗</span>
-            <h3>Tow &amp; impound</h3>
-            <p class="muted">Drop fees, notice fees, storage rates, cash-only lots, stolen-car fees: checked against Maryland towing law.</p>
-            <span class="go">Check my tow receipt →</span>
+          <a class="service-card" href="tow.html">
+            <div class="media"><img data-img="towTruck" alt=""><span class="badge" data-icon="truck"></span></div>
+            <div class="body">
+              <h3>Tow or impound receipt</h3>
+              <ul>
+                <li>Drop fees above the legal 50%</li>
+                <li>Notice fees you don't owe</li>
+                <li>Cash-only lots, storage rates</li>
+                <li>Stolen-car fees at the City lot</li>
+              </ul>
+              <span class="go">Check my tow receipt <span data-icon="arrow"></span></span>
+            </div>
           </a>
+        </div>
+
+        <div class="alert alert-error" style="margin-top:36px">
+          <span data-icon="alert"></span>
+          <div>
+            <h3>Got a BGE shut-off notice?</h3>
+            <p>If you're disputing the bill, file a free complaint with the Maryland Public Service Commission today. BGE must pause shut-offs while a billing-dispute complaint is pending. Call <a href="tel:18004920474">1-800-492-0474</a> or <a href="https://mdpsc.my.site.com/complaints/s/?language=en_US" target="_blank" rel="noopener">file online</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="wrap">
+        <div class="section-head center">
+          <span class="kicker">How it works</span>
+          <h2>From "this can't be right" to a letter in the mail</h2>
+        </div>
+        <ol class="process" style="padding:0;margin:0">
+          <li><span class="num" data-icon="upload"></span><h3>Upload or type</h3><p class="muted">Drop in a PDF or photo of the bill, or type a few numbers. It's read on your device.</p></li>
+          <li><span class="num" data-icon="search"></span><h3>See what's wrong</h3><p class="muted">Each issue is ranked (likely error, worth checking or tip) with the dollars at stake.</p></li>
+          <li><span class="num" data-icon="hand"></span><h3>Find help paying</h3><p class="muted">We check your income against the EUSP, MEAP and Water4All limits.</p></li>
+          <li><span class="num" data-icon="letter"></span><h3>Send your letter</h3><p class="muted">Your dispute letter, plus exactly who to send it to and the deadlines.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Why this matters</span>
+          <h2>Baltimore bills are hard to read, and mistakes cost real money</h2>
+        </div>
+        <div class="stat-grid">
+          <div class="stat"><b>290,000</b><p>BGE customers were behind on their bills as of March 2026.</p><a href="https://marylandmatters.org/2026/08/11/bge-rate-increase-protest/" target="_blank" rel="noopener">Maryland Matters</a></div>
+          <div class="stat"><b>$19.23</b><p>The cost of 748 gallons (1 CCF) of City water + sewer since July 2026, so a hidden leak adds up fast.</p><a href="https://www.baltimorecity.gov/publicworks/our-work/water-bill/understanding-your-water-bill" target="_blank" rel="noopener">Baltimore City DPW</a></div>
+          <div class="stat"><b>50%</b><p>The most a tow company can charge to drop your car before it leaves the lot.</p><a href="https://law.justia.com/codes/maryland/transportation/title-21/subtitle-10a/section-21-10a-05/" target="_blank" rel="noopener">Md. Code § 21-10A-05</a></div>
         </div>
       </div>
     </section>
@@ -59,38 +131,26 @@
     <section class="section">
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow">How it works</p>
-          <h2>From "this can't be right" to a sent letter</h2>
+          <span class="kicker">Common questions</span>
+          <h2>Before you start</h2>
         </div>
-        <div class="steps">
-          <div class="step"><h3>Upload or type</h3><p class="muted">Drop in a PDF or photo of the bill, or type a few numbers. It's read in your browser.</p></div>
-          <div class="step"><h3>See what's off</h3><p class="muted">Each issue is ranked: likely error, worth checking, or tip. Each one comes with the dollar amount at stake.</p></div>
-          <div class="step"><h3>Get help paying</h3><p class="muted">We check your income against the EUSP, MEAP and Water4All limits.</p></div>
-          <div class="step"><h3>Send the letter</h3><p class="muted">A dispute letter with your findings filled in, plus exactly where to send it and the deadlines.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">Why this exists</p>
-          <h2>Baltimore bills are hard to read, and mistakes are expensive</h2>
-        </div>
-        <div class="stats">
-          <div class="stat"><b>290,000</b>BGE customers were behind on payments as of March 2026. <a href="https://marylandmatters.org/2026/08/11/bge-rate-increase-protest/" target="_blank" rel="noopener">Maryland Matters ↗</a></div>
-          <div class="stat"><b>$19.23</b>per CCF (748 gallons) for City water + sewer since July 2026, so a hidden leak adds up fast. <a href="https://www.baltimorecity.gov/publicworks/our-work/water-bill/understanding-your-water-bill" target="_blank" rel="noopener">DPW ↗</a></div>
-          <div class="stat"><b>50%</b>The most a tow company can charge to drop your car before it leaves the lot. <a href="https://law.justia.com/codes/maryland/transportation/title-21/subtitle-10a/section-21-10a-05/" target="_blank" rel="noopener">Md. Code §21-10A-05 ↗</a></div>
+        <div class="accordion">
+          <details open><summary>Is this really free? Who runs it?</summary><div class="acc-body"><p>Yes, it's completely free. BillBack Baltimore is an independent, open-source project. It isn't run by BGE, the City or the State, and it will never ask you for payment or bank details.</p></div></details>
+          <details><summary>Is it safe to upload my bill?</summary><div class="acc-body"><p>Your bill is read inside your own browser and never sent to a server. When you close the tab, it's gone. You can also skip the upload and type the numbers in.</p></div></details>
+          <details><summary>Can disputing a bill get my service shut off?</summary><div class="acc-body"><p>For BGE, filing a billing-dispute complaint with the Maryland PSC pauses shut-offs while it's reviewed. For City water, the law protects continued service while a review is pending. Paying the part you don't dispute is still a good idea.</p></div></details>
+          <details><summary>What if I can't afford the bill even if it's right?</summary><div class="acc-body"><p>You may qualify for help. EUSP and MEAP help with BGE bills, and Water4All caps water bills by income. <a href="help.html">Check your eligibility in 30 seconds</a>.</p></div></details>
+          <details><summary>Is this legal advice?</summary><div class="acc-body"><p>No. It's general information based on published rules, with a link to each source. For legal help, contact <a href="https://www.mdlab.org/" target="_blank" rel="noopener">Maryland Legal Aid</a>.</p></div></details>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="wrap">
-        <div class="callout">
-          <h3>Got a shut-off notice?</h3>
-          <p style="margin:0">If you're disputing the bill, file a free complaint with the Maryland Public Service Commission today. BGE must pause shut-offs while a billing-dispute complaint is pending. <a href="rights.html#bge">See how →</a></p>
+    <section class="section section-alt">
+      <div class="wrap" style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+        <div>
+          <h2 style="margin-bottom:6px">Need to call someone right now?</h2>
+          <p class="muted" style="margin:0">BGE, DPW water billing, the PSC, Water4All and more, all on one page.</p>
         </div>
+        <a class="btn btn-primary btn-big" href="contacts.html"><span data-icon="phone"></span> Open the phone directory</a>
       </div>
     </section>
   </main>

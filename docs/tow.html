@@ -3,31 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#162e51">
   <title>Check your tow receipt | BillBack Baltimore</title>
   <meta name="description" content="Check a Baltimore tow or impound receipt against Maryland towing law: drop fees, notice fees, storage, payment rules and stolen-car fees.">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Public+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script type="module" src="js/ui/layout.js"></script>
   <script type="module" src="js/pages/tow.js"></script>
 </head>
 <body>
   <main id="main">
-    <section class="page-head">
+    <section class="page-head" data-bg="rowhousesStreet">
       <div class="wrap">
-        <div class="crumbs"><a href="index.html">Home</a> / Tow receipt</div>
-        <h1>🚗 Check your tow receipt</h1>
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> › <span aria-current="page">Tow receipt</span></nav>
+        <h1><span class="icon-badge" data-icon="truck"></span>Check your tow receipt</h1>
         <p>Towed from a private lot, or picked up from the City impound? We check every charge against Maryland and Baltimore towing rules.</p>
       </div>
     </section>
+    <div class="steps-bar"><div class="wrap">
+      <ol class="step-indicator" id="steps" aria-label="Progress">
+        <li class="current"><span class="n">1</span><span class="label">Your bill</span></li>
+        <li><span class="n">2</span><span class="label">Results &amp; help</span></li>
+        <li><span class="n">3</span><span class="label">Your letter</span></li>
+      </ol>
+    </div></div>
 
     <div class="wrap checker">
       <div>
         <div class="panel">
           <div class="dropzone" id="upload" tabindex="0" role="button" aria-describedby="upload-status">
-            <div class="big" aria-hidden="true">🧾</div>
+            <div class="up" data-icon="upload"></div>
             <b>Drop a photo of your receipt here</b> or click to choose
             <div class="small muted">Read on your device, never uploaded.</div>
             <input type="file" accept="application/pdf,image/*,.txt">
@@ -78,7 +86,7 @@
 
             <div class="btn-row">
               <button class="btn btn-primary" type="submit">Check my receipt</button>
-              <button class="btn btn-ghost" type="reset">Start over</button>
+              <button class="btn btn-outline" type="reset">Start over</button>
             </div>
           </form>
         </div>
@@ -88,6 +96,7 @@
 
       <aside class="side">
         <div class="panel">
+          <div class="side-photo"><img data-img="towTruck" alt=""></div>
           <h3>Your rights after a private-lot tow</h3>
           <ol class="small">
             <li>If you get there <b>before the car leaves the lot</b>, they must release it. The drop fee is at most <b>half</b> a full tow.</li>

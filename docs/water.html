@@ -3,31 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#162e51">
   <title>Check your Baltimore water bill | BillBack Baltimore</title>
   <meta name="description" content="Recalculate your Baltimore City water and sewer bill at DPW's FY2027 rates, find leaks and misreads, check Water4All eligibility and get a dispute letter.">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Public+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script type="module" src="js/ui/layout.js"></script>
   <script type="module" src="js/pages/water.js"></script>
 </head>
 <body>
   <main id="main">
-    <section class="page-head">
+    <section class="page-head" data-bg="northAvenue">
       <div class="wrap">
-        <div class="crumbs"><a href="index.html">Home</a> / Water bill</div>
-        <h1>💧 Check your City water bill</h1>
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> › <span aria-current="page">Water bill</span></nav>
+        <h1><span class="icon-badge" data-icon="drop"></span>Check your City water bill</h1>
         <p>We recalculate your water and sewer charges at the rates DPW publishes and flag anything that doesn't fit your home.</p>
       </div>
     </section>
+    <div class="steps-bar"><div class="wrap">
+      <ol class="step-indicator" id="steps" aria-label="Progress">
+        <li class="current"><span class="n">1</span><span class="label">Your bill</span></li>
+        <li><span class="n">2</span><span class="label">Results &amp; help</span></li>
+        <li><span class="n">3</span><span class="label">Your letter</span></li>
+      </ol>
+    </div></div>
 
     <div class="wrap checker">
       <div>
         <div class="panel">
           <div class="dropzone" id="upload" tabindex="0" role="button" aria-describedby="upload-status">
-            <div class="big" aria-hidden="true">📄</div>
+            <div class="up" data-icon="upload"></div>
             <b>Drop your water bill here</b> or click to choose
             <div class="small muted">PDF from the DPW portal, or a photo. Read on your device, never uploaded.</div>
             <input type="file" accept="application/pdf,image/*,.txt">
@@ -77,7 +85,7 @@
 
             <div class="btn-row">
               <button class="btn btn-primary" type="submit">Check my bill</button>
-              <button class="btn btn-ghost" type="reset">Start over</button>
+              <button class="btn btn-outline" type="reset">Start over</button>
             </div>
           </form>
         </div>
@@ -87,6 +95,7 @@
 
       <aside class="side">
         <div class="panel">
+          <div class="side-photo"><img data-img="waterMeter" alt=""></div>
           <h3>Rates we check against</h3>
           <p class="small muted">DPW residential rates from July 1, 2026 (FY2027):</p>
           <ul class="small" style="padding-left:1.1em;margin:0 0 12px">

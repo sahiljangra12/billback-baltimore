@@ -7,6 +7,7 @@ import { SOURCES } from "../data/sources.js";
 import { checkAssistance } from "../data/assistance.js";
 import { ESCALATION } from "../data/contacts.js";
 import { buildLetter } from "../letters/letters.js";
+import { icon } from "./icons.js";
 
 const SEV_LABEL = { urgent: "Act now", error: "Likely error", check: "Worth checking", tip: "Tip" };
 
@@ -23,6 +24,7 @@ export function mountChecker(cfg) {
     findings = cfg.check(values);
     renderResults(results, cfg, values, findings);
     results.hidden = false;
+    setStep(2);
     results.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
@@ -30,6 +32,14 @@ export function mountChecker(cfg) {
     $$(".autofilled", form).forEach((el) => el.classList.remove("autofilled"));
     results.hidden = true;
     $("#upload-status").textContent = "";
+    setStep(1);
+  });
+}
+
+function setStep(n) {
+  $$("#steps li").forEach((li, i) => {
+    li.className = i + 1 < n ? "done" : i + 1 === n ? "current" : "";
+    if (i + 1 === n) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
   });
 }
 
@@ -75,28 +85,28 @@ function renderResults(root, cfg, values, findings) {
 
   root.innerHTML = `
     <div class="panel">
-      <h2>Your results</h2>
+      <h2>${icon("search")} Your results</h2>
       <div class="summary">
         <div class="sum-box"><b>${s.counts.urgent + s.counts.error}</b>Likely errors / urgent</div>
         <div class="sum-box"><b>${s.counts.check}</b>Worth checking</div>
         <div class="sum-box"><b>${s.counts.tip}</b>Tips</div>
         <div class="sum-box save"><b>${s.savings ? money(s.savings) : "—"}</b>Possible savings</div>
       </div>
-      ${problems === 0 ? `<div class="empty"><h3>Nothing looks wrong with the numbers you entered.</h3><p class="muted">That's good news. If the bill still feels too high, add your past usage or more line items and check again, or see if you qualify for help paying.</p></div>` : ""}
+      ${problems === 0 ? `<div class="alert alert-success empty">${icon("checkCircle")}<div><h3>Nothing looks wrong with the numbers you entered.</h3><p>That's good news. If the bill still feels too high, add your past usage or more line items and check again, or see if you qualify for help paying.</p></div></div>` : ""}
       <div id="findings">${findings.map(renderFinding).join("")}</div>
     </div>
 
-    ${cfg.type !== "tow" ? `<div class="panel" id="programs-panel"><h2>Help paying this bill</h2><div class="programs" id="programs"></div></div>` : ""}
+    ${cfg.type !== "tow" ? `<div class="panel" id="programs-panel"><h2>${icon("hand")} Help paying this bill</h2><div class="programs" id="programs"></div></div>` : ""}
 
     <div class="panel">
-      <h2>What to do next</h2>
+      <h2>${icon("scale")} What to do next</h2>
       <ol class="timeline">
-        ${ESCALATION[cfg.type].map((st) => `<li><b>${esc(st.step)}</b><span class="muted">${esc(st.detail)}</span> <a href="${st.url}" target="_blank" rel="noopener">Official page ↗</a></li>`).join("")}
+        ${ESCALATION[cfg.type].map((st) => `<li><b>${esc(st.step)}</b><span class="muted">${esc(st.detail)}</span> <a href="${st.url}" target="_blank" rel="noopener">Official page ${icon("external")}</a></li>`).join("")}
       </ol>
     </div>
 
     <div class="panel letter-box" id="letter-section">
-      <h2>Your dispute letter</h2>
+      <h2>${icon("letter")} Your dispute letter</h2>
       <p class="muted">Tick the findings to include, add your details, then copy, download or print. Edit anything you like. It's your letter.</p>
       <form id="who" class="grid-2" autocomplete="on">
         <div class="field"><label for="w-name">Your name</label><input id="w-name" name="name" type="text" autocomplete="name"></div>
@@ -108,9 +118,9 @@ function renderResults(root, cfg, values, findings) {
       </form>
       <div class="field" style="margin-top:16px"><label for="letter">Letter</label><textarea id="letter" spellcheck="true"></textarea></div>
       <div class="btn-row" style="margin-top:12px">
-        <button class="btn btn-dark btn-sm" id="copy-letter" type="button">Copy letter</button>
-        <button class="btn btn-ghost btn-sm" id="download-letter" type="button">Download .txt</button>
-        <button class="btn btn-ghost btn-sm" id="print-letter" type="button">Print</button>
+        <button class="btn btn-primary btn-sm" id="copy-letter" type="button">${icon("copy")} Copy letter</button>
+        <button class="btn btn-outline btn-sm" id="download-letter" type="button">${icon("download")} Download .txt</button>
+        <button class="btn btn-outline btn-sm" id="print-letter" type="button">${icon("print")} Print</button>
         <span class="status" id="letter-status" role="status"></span>
       </div>
     </div>`;
@@ -123,7 +133,7 @@ function renderFinding(f, i) {
   const sources = f.sourceIds
     .map((id) => SOURCES[id])
     .filter(Boolean)
-    .map((s) => `<a href="${s.url}" target="_blank" rel="noopener" title="${esc(s.title)}">Source ↗</a>`)
+    .map((s) => `<a href="${s.url}" target="_blank" rel="noopener" title="${esc(s.title)}">Source ${icon("external")}</a>`)
     .slice(0, 2)
     .join(" ");
   return `
@@ -154,7 +164,7 @@ function renderPrograms(el, type, values) {
         <div class="verdict v-${p.verdict}">${text[p.verdict]}${p.limit ? ` (limit ${money(p.limit)}/month for ${size} ${size === 1 ? "person" : "people"})` : ""}</div>
         <h3>${esc(p.name)}</h3>
         <p class="muted" style="margin:0 0 6px">${esc(p.what)} ${esc(p.howToApply)}</p>
-        <a href="${p.url}" target="_blank" rel="noopener">How to apply ↗</a>
+        <a href="${p.url}" target="_blank" rel="noopener">How to apply ${icon("external")}</a>
       </div>`)
     .join("") + `<p class="small muted" style="margin:6px 0 0">Income limits: Maryland OHEP FY27 guidelines (200% of the federal poverty level). Final eligibility is decided by the program. <a href="help.html">More help options →</a></p>`;
 }
@@ -175,6 +185,10 @@ function wireLetter(root, cfg, values, findings) {
   };
 
   render();
+  const letterSection = $("#letter-section", root);
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver((es, ob) => { if (es.some((e) => e.isIntersecting)) { setStep(3); ob.disconnect(); } }, { threshold: 0.3 }).observe(letterSection);
+  }
   who.addEventListener("input", render);
   root.addEventListener("change", (e) => { if (e.target.matches("[data-include]")) { edited = false; render(); } });
   box.addEventListener("input", () => { edited = true; });

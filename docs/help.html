@@ -3,22 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#162e51">
   <title>Help paying your bills | BillBack Baltimore</title>
   <meta name="description" content="See if your Baltimore household qualifies for EUSP, MEAP energy assistance or the Water4All water discount, using the FY27 income limits.">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Public+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script type="module" src="js/ui/layout.js"></script>
   <script type="module" src="js/pages/help.js"></script>
 </head>
 <body>
   <main id="main">
-    <section class="page-head">
+    <section class="page-head" data-bg="northAvenue">
       <div class="wrap">
-        <div class="crumbs"><a href="index.html">Home</a> / Get help paying</div>
-        <h1>Help paying your bills</h1>
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> › <span aria-current="page">Help paying</span></nav>
+        <h1><span class="icon-badge" data-icon="hand"></span>Help paying your bills</h1>
         <p>Two questions, and we'll show which programs you likely qualify for. Nothing you enter leaves this page.</p>
       </div>
     </section>
@@ -38,7 +39,7 @@
           <h2>FY27 income limits (200% of the federal poverty level)</h2>
           <p class="muted">These limits apply to EUSP, MEAP and Water4All. Effective July 1, 2026.</p>
           <div style="overflow-x:auto"><table id="limits" style="width:100%;border-collapse:collapse"></table></div>
-          <p class="small muted" style="margin-top:10px">Source: <a href="https://dhs.maryland.gov/documents/OHEP/FY27-OHEP-Income-Guidelines.pdf" target="_blank" rel="noopener">Maryland OHEP FY27 Income Guidelines ↗</a>. For 11+ people, MEAP uses a separate state-median-income table.</p>
+          <p class="small muted" style="margin-top:10px">Source: <a href="https://dhs.maryland.gov/documents/OHEP/FY27-OHEP-Income-Guidelines.pdf" target="_blank" rel="noopener">Maryland OHEP FY27 Income Guidelines <span data-icon="external"></span></a>. For 11+ people, MEAP uses a separate state-median-income table.</p>
         </div>
       </div>
 
