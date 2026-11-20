@@ -390,3 +390,13 @@ table.data tr:nth-child(even) td { background: var(--base-lightest); }
   body.printing-letter main > *:not(.print-target) { display: none !important; }
   body.printing-letter .print-target { display: block !important; white-space: pre-wrap; font-family: Georgia, serif; font-size: 12pt; line-height: 1.5; }
 }
+
+/* ---------- Small phones ---------- */
+@media (max-width: 600px) {
+  .brand-sub { display: none; }
+  .header-top { padding-top: 12px; padding-bottom: 12px; }
+  .gov-banner .wrap { padding-top: 6px; padding-bottom: 6px; gap: 6px 10px; font-size: 0.8rem; }
+  .hero .wrap { padding-top: 48px; padding-bottom: 56px; }
+  .page-head h1 { font-size: 1.75rem; }
+  .page-head h1 .icon-badge { width: 44px; height: 44px; }
+}
