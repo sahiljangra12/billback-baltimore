@@ -400,3 +400,6 @@ table.data tr:nth-child(even) td { background: var(--base-lightest); }
   .page-head h1 { font-size: 1.75rem; }
   .page-head h1 .icon-badge { width: 44px; height: 44px; }
 }
+
+/* Small phones: long emails and links wrap instead of widening the page. */
+@media (max-width: 480px) { main p, main li, main span, main a { overflow-wrap: anywhere; } }
