@@ -70,7 +70,7 @@ export const ESCALATION = {
     {
       step: "Still stuck? Consumer protection or small claims",
       detail: "File with the Maryland Attorney General's Consumer Protection Division, or sue for the overcharge in District Court small claims.",
-      url: "https://www.marylandattorneygeneral.gov/Pages/CPD/default.aspx",
+      url: "https://oag.maryland.gov/our-office/Pages/consumer-protection-division.aspx",
       sourceId: null,
     },
   ],
