@@ -403,3 +403,10 @@ table.data tr:nth-child(even) td { background: var(--base-lightest); }
 
 /* Small phones: long emails and links wrap instead of widening the page. */
 @media (max-width: 480px) { main p, main li, main span, main a { overflow-wrap: anywhere; } }
+
+/* Phones: finger-sized small links */
+@media (max-width: 640px) {
+  .crumbs a { display: inline-block; padding: 10px 0; }
+  .photo-credit { padding: 6px 10px; }
+  a.tel { display: inline-flex; align-items: center; min-height: 44px; }
+}
